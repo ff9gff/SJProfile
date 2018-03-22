@@ -67,6 +67,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -92,46 +93,36 @@ body {
 
 </head>
 <body>
-
 	<!-- Navbar -->
 	<div class="w3-top">
 		<div class="w3-bar w3-black w3-card">
-			<%
-				String userid = (String) session.getAttribute("mem_id");
-
-				if (userid == null) {
-			%>
-			<a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-			<a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a> 
-			<a href="#login" class="w3-bar-item w3-button w3-padding-large w3-hide-small">로그인</a>
-			<a href="member/registerform.do" class="w3-bar-item w3-button w3-padding-large w3-hide-small">회원가입</a>
-			<!-- <a href="chat/chatajaxform.jsp">채팅</a> -->
-			<a href="board/board.do" class="w3-bar-item w3-button w3-padding-large w3-hide-small">게시판</a>
-
-			<%
-				} else if (userid.equals("admin")) {
-			%>
-			<a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a> 
-			<a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-			<a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right"	>${mem_id}님 환영합니다.</a> 
-			<a href="logout.do" class="w3-bar-item w3-button w3-padding-large w3-hide-small">로그아웃</a>
-			<a href="member/listmember.do" class="w3-bar-item w3-button w3-padding-large w3-hide-small">회원관리</a>
-			<a href="board/board.do" class="w3-bar-item w3-button w3-padding-large w3-hide-small">게시판</a> 
-			<!-- <a href="chat/chatajaxform.jsp">채팅</a> -->
+			<c:choose>
+				<c:when test="${empty mem_id}">
+					<a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+					<a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a> 
+					<a href="#login" class="w3-bar-item w3-button w3-padding-large w3-hide-small">로그인</a>
+					<a href="member/registerform.do" class="w3-bar-item w3-button w3-padding-large w3-hide-small">회원가입</a>
+					<!-- <a href="chat/chatajaxform.jsp">채팅</a> -->
+					<a href="board/board.do" class="w3-bar-item w3-button w3-padding-large w3-hide-small">게시판</a>
+				</c:when>
+				
+				<c:when test="${mem_id eq 'admin'}">
+				<a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a> 
+					<a class="w3-bar-item w3-button w3-padding-large w3-hide-small"	>${mem_id}님 환영합니다.</a> 
+					<a href="logout.do" class="w3-bar-item w3-button w3-padding-large w3-hide-small">로그아웃</a>
+					<a href="member/listmember.do" class="w3-bar-item w3-button w3-padding-large w3-hide-small">회원관리</a>
+					<a href="board/board.do" class="w3-bar-item w3-button w3-padding-large w3-hide-small">게시판</a> 
+					<!-- <a href="chat/chatajaxform.jsp">채팅</a> -->
+				</c:when>
+				
+				<c:otherwise>
+					<a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a> 
+					<a class="w3-bar-item w3-button w3-padding-large w3-hide-small"	>${mem_id}님 환영합니다.</a> 
+					<a href="logout.do" class="w3-bar-item w3-button w3-padding-large w3-hide-small">로그아웃</a>
+					<a href="board/board.do" class="w3-bar-item w3-button w3-padding-large w3-hide-small">게시판</a> 
+				</c:otherwise>
+			</c:choose>
 			
-			
-			<%
-				} else {
-			%>
-			<a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a> 
-			<a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-			<a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right">${mem_id}님 환영합니다.</a> 
-			<a href="logout.do" class="w3-bar-item w3-button w3-padding-large w3-hide-small">로그아웃</a>
-			<a href="board/board.do" class="w3-bar-item w3-button w3-padding-large w3-hide-small">게시판</a> 
-			<%
-				}
-			%>
-
 			<div class="w3-dropdown-hover w3-hide-small">
 				<button class="w3-padding-large w3-button" title="Game"> 
 					GAME <i class="fa fa-caret-down"></i>
@@ -144,41 +135,38 @@ body {
 			<a href="javascript:void(0)"
 				class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i
 				class="fa fa-search"></i></a>
-				
-			
 		</div>
 	</div>
 
 	
-
-	<!-- Navbar on small screens -->
+	<!-- <!-- Navbar on small screens -->
 	<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top: 46px">
 		<a href="#band" class="w3-bar-item w3-button w3-padding-large">BAND</a>
 		<a href="#tour" class="w3-bar-item w3-button w3-padding-large">TOUR</a>
 		<a href="#contact" class="w3-bar-item w3-button w3-padding-large">CONTACT</a>
 		<a href="#" class="w3-bar-item w3-button w3-padding-large">MERCH</a>
-	</div>
+	</div> -->
 
 	<!-- Page content -->
 	<div class="w3-content" style="max-width: 2000px; margin-top: 46px">
 
 		<!-- Automatic Slideshow Images -->
 		<div class="mySlides w3-display-container w3-center">
-			<img src="images/correct.png" style="width: 10%">
+			<img src="images/black.png" style="width: 100%; height: 10%">
 			<div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
 				<h3>Los Angeles</h3>
 				<p> <b>We had the best time playing at Venice Beach!</b> </p>
 			</div>
 		</div>
 		<div class="mySlides w3-display-container w3-center">
-			<img src="images/incorrect.png" style="width: 10%">
+			<img src="images/black.png" style="width: 100%; height: 50%">
 			<div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
 				<h3>New York</h3>
 				<p> <b>The atmosphere in New York is lorem ipsum.</b> </p>
 			</div>
 		</div>
 		<div class="mySlides w3-display-container w3-center">
-			<img src="images/correct.png" style="width: 10%">
+			<img src="images/black.png" style="width: 100%; height: 50%">
 			<div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
 				<h3>Chicago</h3>
 				<p> <b>Thank you, Chicago - A night we won't forget.</b> </p>
@@ -190,8 +178,7 @@ body {
 			<h2 class="w3-wide">THE BAND</h2>
 			<p class="w3-opacity"> <i>We love music</i> </p>
 			<p class="w3-justify">We have created a fictional band website.
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-				eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+				
 			</p>
 			<div class="w3-row w3-padding-32">
 				<div class="w3-third">
