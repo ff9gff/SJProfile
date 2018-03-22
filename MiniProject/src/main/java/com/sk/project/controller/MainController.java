@@ -27,6 +27,7 @@ public class MainController {
 	
 		String mem_id = (String) session.getAttribute("mem_id");
 		
+		//
 		if (mem_id == null) {
 			String code = "index1";
 			logger.info("로그인창 접속 확인1 :" + code);
@@ -39,7 +40,6 @@ public class MainController {
 	
 	@RequestMapping(value = "/index.do", method = RequestMethod.GET)
 	public String loginFirst() {
-		logger.info("홈화면으로");
 		return "redirect:/";
 	}
 	
