@@ -190,7 +190,7 @@
 			<div class="mySlides w3-display-container w3-center">
 				<img src="images/black.png" style="width: 100%; height: 10%">
 				<div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
-					<h3>wow</h3>
+					<h3>wowwowwow</h3>
 					<p> <b>We had the best time playing at Venice Beach!</b> </p>
 				</div>
 			</div>
