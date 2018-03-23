@@ -13,7 +13,7 @@
 		.btn {
 			width: 50px;
 			height: 50px;
-			background: lightblue;
+			background: silver;
 		}
 		
 		@font-face {
@@ -25,6 +25,10 @@
 			font-family: "fontTest";
 			font-size: 16pt;
 			color: gold;
+		}
+		
+		table {
+			border-left: 50px;
 		}
 	</style>
 	
@@ -145,7 +149,7 @@
 				shuffle(btnArr2);
 				$('button.btn').each(function(i, btn) {
 					$(btn).text(btnArr[i]);
-					$(btn).css('background', 'lightblue');	
+					$(btn).css('background', 'silver');	
 				});
 				valueCheck = 0;
 				answerCheck = 1;
@@ -164,7 +168,7 @@
 					shuffle(btnArr2);
 					$('button.btn').each(function(i, btn) {
 						$(btn).text(btnArr[i]);
-						$(btn).css('background', 'lightblue');	
+						$(btn).css('background', 'silver');	
 					});
 					
 					$('#check').hide();

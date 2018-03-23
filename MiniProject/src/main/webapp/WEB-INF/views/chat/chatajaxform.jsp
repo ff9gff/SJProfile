@@ -27,7 +27,7 @@
 <label><%=userid%>님 환영합니다.</label>
 
 <div id="msg"
-	style="background-color: lightgreen; width: 100%; height: 200px; overflow-y: auto;">
+	style="background-color: silver; width: 100%; height: 200px; overflow-y: auto;">
 	<%=message%>
 </div>
 
